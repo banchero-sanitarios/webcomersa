@@ -1,0 +1,41 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+:root {
+  --cnvs-themecolor: #0a3c3f;
+  --cnvs-themecolor-rgb: 10, 60, 63;
+}
+
+.grid-border [class^='col-']:hover {
+  background-color: #fff;
+}
+.heading-block::after {
+  content: '';
+  display: none;
+  margin-top: 30px;
+  width: var(--cnvs-title-block-border-size);
+  border-top: var(--cnvs-heading-block-border);
+}
+.message-error {
+  color: red;
+}
+.message-ok {
+  color: limegreen;
+}
+#submessage {
+  visibility: hidden;
+}
+#contactmessage {
+  color: green;
+  visibility: hidden;
+}
+#qrAfip {
+  height: 48px;
+}
+
+iframe {
+  height: 240px;
+}
