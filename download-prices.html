@@ -11,6 +11,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/comersa_icon.png">
 
+  <!-- Preload critical resources -->
+  <link rel="preload" href="images/comersa_logo.png" as="image">
+  <link rel="preload" href="css/min/style.min.css" as="style">
+  <link rel="preload" href="js/min/functions.bundle.min.js" as="script">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Font Imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,25 +26,34 @@
     rel="stylesheet">
 
   <!-- Core Style -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/min/style.min.css">
 
   <!-- Font Icons -->
   <link rel="stylesheet" href="css/font-icons.css">
 
   <!-- Plugins/Components CSS -->
-  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="css/min/swiper.min.css">
 
   <!-- Niche Demos -->
-  <link rel="stylesheet" href="css/construction.css">
+  <link rel="stylesheet" href="css/min/construction.min.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/min/custom.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Crítico para carga rápida -->
+  <style>
+    :root{--cnvs-themecolor:#0a3c3f;--cnvs-themecolor-rgb:10,60,63}
+    #logo img{max-height:60px;width:auto}
+    .iframe-container{position:relative;min-height:240px}
+    .loader{position:absolute;top:50%;left:50%;width:50px;height:50px;border:5px solid rgba(10,60,63,0.2);border-radius:50%;border-top-color:#0a3c3f;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+    #submessage{visibility:hidden}
+  </style>
 
   <!-- Document Title
 	============================================= -->
   <title>Comersa Distribuidor Sanitario</title>
-
 
 </head>
 
@@ -131,9 +147,12 @@
                   actualizada.</span>
               </div>
               <div class="justify-content-center align-items-center">
-                <iframe class="text-center"
-                  src="https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec"
-                  frameborder="0"></iframe>
+                <div class="iframe-container text-center">
+                  <div class="loader" id="iframe-loader"></div>
+                  <iframe id="prices-iframe" class="text-center"
+                    src="https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec"
+                    frameborder="0" onload="this.classList.add('loaded'); document.getElementById('iframe-loader').style.display='none';"></iframe>
+                </div>
               </div>
               <!-- <p class="text-center">aca va a ir embeded el form the google </p> -->
             </div>
@@ -185,7 +204,7 @@
                   últimas novedades para potenciar su negocio.</p>
               </form>
             </div>
-            <div class="mt-3 d-flex justify-content-md-end">
+          <!--   <div class="mt-3 d-flex justify-content-md-end">
               <a href="#" class="social-icon si-small border-transparent h-bg-facebook">
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-facebook-f"></i>
@@ -210,7 +229,7 @@
                 <i class="fa-brands fa-linkedin"></i>
                 <i class="fa-brands fa-linkedin"></i>
               </a>
-            </div>
+            </div> -->
 
           </div>
 
@@ -228,7 +247,7 @@
               <div class="copyrights-menu copyright-links">
 
               </div>
-              <p>Copyright &copy; 2024 Todos los derechos reservados.</p><br>
+              <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Todos los derechos reservados.</p><br>
               <!-- <div class="copyright-links">
                 <a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
               </div> -->
@@ -239,7 +258,7 @@
                 <a href="#">Inicio</a>/
                 <!-- <a href="#">Empresa</a>/ -->
                 <!-- <a href="#">Productos</a>/ -->
-                <a href="#">Contacto</a>
+                <a href="/contact.html">Contacto</a>
                 <!-- <a href="#">Trabaja con nosotros</a>/ -->
                 <a href="#">
                   <img src="/images/comersa_afipQR.jpg" alt="logo q r afip" id="qrAfip">
@@ -260,26 +279,53 @@
 
   <!-- JavaScripts
 	============================================= -->
-  <script src="js/plugins.min.js"></script>
-  <script src="js/functions.bundle.js"></script>
+  <script src="js/min/plugins.min.min.js" defer></script>
+  <script src="js/min/functions.bundle.min.js" defer></script>
   <script>
-    const scriptURL =
-      'https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec'
-
-
-    const subscribeForm = document.forms['widget-subscribe-form'];
-
-    subscribeForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(subscribeForm) })
-        .then((response) => {
-          submessage.style.visibility = 'visible';
-          subscribeForm.reset()
-        }
-        )
-        .catch((error) => console.error('Error!', error.message));
+    // Script simplificado y optimizado
+    document.addEventListener("DOMContentLoaded", function() {
+      const subscribeForm = document.forms['widget-subscribe-form'];
+      const submessage = document.getElementById('submessage');
+      
+      if (subscribeForm) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec';
+        const submitButton = document.querySelector('#widget-subscribe-form button');
+        
+        subscribeForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (submitButton) {
+            submitButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Enviando...';
+            submitButton.disabled = true;
+          }
+          
+          fetch(scriptURL, { method: 'POST', body: new FormData(subscribeForm) })
+            .then(function() {
+              if (submitButton) {
+                submitButton.innerHTML = 'Suscribirse';
+                submitButton.disabled = false;
+              }
+              submessage.style.visibility = 'visible';
+              subscribeForm.reset();
+              setTimeout(function() {
+                submessage.style.visibility = 'hidden';
+              }, 5000);
+            })
+            .catch(function(error) {
+              console.error('Error!', error.message);
+              if (submitButton) {
+                submitButton.innerHTML = 'Suscribirse';
+                submitButton.disabled = false;
+              }
+              submessage.innerHTML = 'Ocurrió un error. Por favor intente nuevamente.';
+              submessage.style.visibility = 'visible';
+              setTimeout(function() {
+                submessage.style.visibility = 'hidden';
+                submessage.innerHTML = 'Gracias por suscribirse. Comenzará a recibir las últimas novedades para potenciar su negocio.';
+              }, 5000);
+            });
+        });
+      }
     });
-    // https://script.google.com/macros/s/AKfycbzXO4k9S4zbesRE4r3QXHg5DX8J6UFESxCV3mScFNpjRy2kt3g1UXWPVtw1k8DPqDmeyQ/exec
   </script>
 
 

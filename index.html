@@ -11,6 +11,24 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/comersa_icon.png">
 
+  <!-- CSS Crítico para carga rápida -->
+  <style>
+    :root{--cnvs-themecolor:#0a3c3f;--cnvs-themecolor-rgb:10,60,63}
+    #logo img{max-height:60px;width:auto}
+    .iframe-container{position:relative;min-height:240px}
+    .loader{position:absolute;top:50%;left:50%;width:50px;height:50px;border:5px solid rgba(10,60,63,0.2);border-radius:50%;border-top-color:#0a3c3f;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+    #submessage{visibility:hidden}
+  </style>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="images/comersa_logo.png" as="image">
+  <link rel="preload" href="images/webp/comersa_03.webp" as="image">
+  <link rel="preload" href="css/min/style.min.css" as="style">
+  <link rel="preload" href="js/min/functions.bundle.min.js" as="script">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Font Imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,25 +37,24 @@
     rel="stylesheet">
 
   <!-- Core Style -->
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/min/style.min.css">
 
   <!-- Font Icons -->
   <link rel="stylesheet" href="/css/font-icons.css">
 
   <!-- Plugins/Components CSS -->
-  <link rel="stylesheet" href="/css/swiper.css">
+  <link rel="stylesheet" href="/css/min/swiper.min.css">
 
   <!-- Niche Demos -->
-  <link rel="stylesheet" href="css/construction.css">
+  <link rel="stylesheet" href="css/min/construction.min.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/min/custom.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Document Title
 	============================================= -->
   <title>Comersa Distribuidor Sanitario</title>
-
 
 </head>
 
@@ -120,7 +137,7 @@
               </div>
             </div>
             <div class="swiper-slide-bg"
-              style="background-image: url('images/comersa_03.png'); background-position: center top;">
+              style="background-image: url('images/webp/comersa_03.webp'); background-position: center top;">
             </div>
           </div>
           <div class="swiper-slide">
@@ -135,7 +152,7 @@
               </div>
             </div>
             <div class="swiper-slide-bg"
-              style="background-image: url('images/comersa_02.png'); background-position: center top;">
+              style="background-image: url('images/webp/comersa_02.webp'); background-position: center top;">
             </div>
           </div>
 
@@ -214,10 +231,10 @@
             <div class="row align-items-center">
               <div class="col-12 col-lg">
                 <h3 style="letter-spacing: 2px;">Amplíe su negocio ahora</h3>
-                <span>Satisfaga las necesidades de sus clientes con los productos líderes de cada rubro</span>
+                <span>Cumpla con las necesidades de sus clientes con los productos líderes de cada rubro</span>
               </div>
               <div class="col-12 col-lg-auto mt-4 mt-lg-0">
-                <a href="#" class="button button-large button-circle m-0">Solicitar contacto</a>
+                <a href="/contact.html" class="button button-large button-circle m-0">Solicitar contacto</a>
               </div>
             </div>
           </div>
@@ -229,7 +246,10 @@
             <div class="col-sm-6 col-lg-4">
               <div class="feature-box media-box">
                 <div class="fbox-media">
-                  <img class="rounded" src="images/comersa_propuesta1.png" alt="Amplia oferta">
+                  <picture>
+                    <source srcset="images/webp/comersa_propuesta1.webp" type="image/webp">
+                    <img class="rounded" src="images/comersa_propuesta1.png" alt="Amplia oferta" loading="lazy">
+                  </picture>
                 </div>
                 <div class="fbox-content px-0">
                   <h3>Amplia oferta.<span class="subtitle">Lo que sus clientes necesitan, en un solo lugar.</span></h3>
@@ -242,7 +262,10 @@
             <div class="col-sm-6 col-lg-4">
               <div class="feature-box media-box">
                 <div class="fbox-media">
-                  <img class="rounded" src="images/comersa_propuesta3.png" alt="Effective Planning">
+                  <picture>
+                    <source srcset="images/webp/comersa_propuesta3.webp" type="image/webp">
+                    <img class="rounded" src="images/comersa_propuesta3.png" alt="Effective Planning" loading="lazy">
+                  </picture>
                 </div>
                 <div class="fbox-content px-0">
                   <h3>Precios competitivos.<span class="subtitle">Maximice su inversión.</span></h3>
@@ -255,7 +278,10 @@
             <div class="col-sm-6 col-lg-4">
               <div class="feature-box media-box">
                 <div class="fbox-media">
-                  <img class="rounded" src="images/comersa_propuesta2.png" alt="Why choose Us?">
+                  <picture>
+                    <source srcset="images/webp/comersa_propuesta2.webp" type="image/webp">
+                    <img class="rounded" src="images/comersa_propuesta2.png" alt="Why choose Us?" loading="lazy">
+                  </picture>
                 </div>
                 <div class="fbox-content px-0">
                   <h3>Compromiso de servicio.<span class="subtitle">Lo que necesita, cuando lo necesita.</span></h3>
@@ -308,70 +334,70 @@
                 <span>Somos distribuidores oficiales de las principales marcas del mercado.</span>
               </div>
               <ul class="clients-grid grid-border row row-cols-2 row-cols-sm-3 row-cols-md-4 mb-0 text-center">
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/AFFINITY/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ALARSA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ARIEL/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ARISTON/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/AWADUCT/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/CANPLAST/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/CAPEA - ROCA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/COHUI/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/DELTA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/DINATECNICA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/DUKE/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ESKABE/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/FERRUM/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img src="/images/comersa_proveedores/FV/logo.jpg"
-                      alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/GON REN/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/GRUPO DEMA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/HIDRO 3/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/IDEAL/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/IPS/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/JOHNSON/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/LATYN/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/MOTORARG/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/PRINGLES/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/RAO/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/RAVI/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/RHEEM/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ROTOPLAS/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ROWA/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/TALLERES PAZ/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/TAWARK FORCE/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/TIGRE/logo.jpg" alt="Clients"></a></li>
-                <li class="col-padding p-3"><a class="op-08" href="#"><img
-                      src="/images/comersa_proveedores/ZINGUERIA DIVANO/logo.jpg" alt="Clients"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Affinity.pdf" download title="Descargar catálogo de Affinity"><img
+                      src="/images/comersa_proveedores/AFFINITY/logo.jpg" alt="Affinity" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Alarsa.pdf" download title="Descargar catálogo de Alarsa"><img
+                      src="/images/comersa_proveedores/ALARSA/logo.jpg" alt="Alarsa" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Ariel.pdf" download title="Descargar catálogo de Ariel"><img
+                      src="/images/comersa_proveedores/ARIEL/logo.jpg" alt="Ariel" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Ariston.pdf" download title="Descargar catálogo de Ariston"><img
+                      src="/images/comersa_proveedores/ARISTON/logo.jpg" alt="Ariston" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Awaduct.pdf" download title="Descargar catálogo de Awaduct"><img
+                      src="/images/comersa_proveedores/AWADUCT/logo.jpg" alt="Awaduct" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Canplast.pdf" download title="Descargar catálogo de Canplast"><img
+                      src="/images/comersa_proveedores/CANPLAST/logo.jpg" alt="Canplast" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Capea-Roca.pdf" download title="Descargar catálogo de Capea-Roca"><img
+                      src="/images/comersa_proveedores/CAPEA - ROCA/logo.jpg" alt="Capea - Roca" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Cohui.pdf" download title="Descargar catálogo de Cohui"><img
+                      src="/images/comersa_proveedores/COHUI/logo.jpg" alt="Cohui" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Delta.pdf" download title="Descargar catálogo de Delta"><img
+                      src="/images/comersa_proveedores/DELTA/logo.jpg" alt="Delta" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Dinatecnica.pdf" download title="Descargar catálogo de Dinatecnica"><img
+                      src="/images/comersa_proveedores/DINATECNICA/logo.jpg" alt="Dinatecnica" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Duke.pdf" download title="Descargar catálogo de Duke"><img
+                      src="/images/comersa_proveedores/DUKE/logo.jpg" alt="Duke" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Eskabe.pdf" download title="Descargar catálogo de Eskabe"><img
+                      src="/images/comersa_proveedores/ESKABE/logo.jpg" alt="Eskabe" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Ferrum.pdf" download title="Descargar catálogo de Ferrum"><img
+                      src="/images/comersa_proveedores/FERRUM/logo.jpg" alt="Ferrum" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Fv.pdf" download title="Descargar catálogo de FV"><img src="/images/comersa_proveedores/FV/logo.jpg"
+                      alt="Fv" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Gon Ren.pdf" download title="Descargar catálogo de Gon Ren"><img
+                      src="/images/comersa_proveedores/GON REN/logo.jpg" alt="Gon Ren" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Grupo Dema.pdf" download title="Descargar catálogo de Grupo Dema"><img
+                      src="/images/comersa_proveedores/GRUPO DEMA/logo.jpg" alt="Grupo Dema" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Hidro 3.pdf" download title="Descargar catálogo de Hidro 3"><img
+                      src="/images/comersa_proveedores/HIDRO 3/logo.jpg" alt="Hidro 3" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Ideal.pdf" download title="Descargar catálogo de Ideal"><img
+                      src="/images/comersa_proveedores/IDEAL/logo.jpg" alt="Ideal" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/IPS.pdf" download title="Descargar catálogo de IPS"><img
+                      src="/images/comersa_proveedores/IPS/logo.jpg" alt="IPS" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Johnson.pdf" download title="Descargar catálogo de Johnson"><img
+                      src="/images/comersa_proveedores/JOHNSON/logo.jpg" alt="Johnson" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Latyn.pdf" download title="Descargar catálogo de Latyn"><img
+                      src="/images/comersa_proveedores/LATYN/logo.jpg" alt="Latyn" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Motorarg.pdf" download title="Descargar catálogo de Motorarg"><img
+                      src="/images/comersa_proveedores/MOTORARG/logo.jpg" alt="Motorarg" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Pringles.pdf" download title="Descargar catálogo de Pringles"><img
+                      src="/images/comersa_proveedores/PRINGLES/logo.jpg" alt="Pringles" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Rao.pdf" download title="Descargar catálogo de Rao"><img
+                      src="/images/comersa_proveedores/RAO/logo.jpg" alt="Rao" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Ravi.pdf" download title="Descargar catálogo de Ravi"><img
+                      src="/images/comersa_proveedores/RAVI/logo.jpg" alt="Ravi" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Rheem.pdf" download title="Descargar catálogo de Rheem"><img
+                      src="/images/comersa_proveedores/RHEEM/logo.jpg" alt="Rheem" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Rotoplas.pdf" download title="Descargar catálogo de Rotoplas"><img
+                      src="/images/comersa_proveedores/ROTOPLAS/logo.jpg" alt="Rotoplas" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Rowa.pdf" download title="Descargar catálogo de Rowa"><img
+                      src="/images/comersa_proveedores/ROWA/logo.jpg" alt="Rowa" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Talleres Paz.pdf" download title="Descargar catálogo de Talleres Paz"><img
+                      src="/images/comersa_proveedores/TALLERES PAZ/logo.jpg" alt="Talleres Paz" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Tawak Force.pdf" download title="Descargar catálogo de Tawak Force"><img
+                      src="/images/comersa_proveedores/TAWARK FORCE/logo.jpg" alt="Tawak Force" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Tigre.pdf" download title="Descargar catálogo de Tigre"><img
+                      src="/images/comersa_proveedores/TIGRE/logo.jpg" alt="Tigre" loading="lazy"></a></li>
+                <li class="col-padding p-3"><a class="op-08" href="/catalogs/Zingueria Divano.pdf" download title="Descargar catálogo de Zingueria Divano"><img
+                      src="/images/comersa_proveedores/ZINGUERIA DIVANO/logo.jpg" alt="Zingueria Divano" loading="lazy"></a></li>
 
 
               </ul>
@@ -421,10 +447,10 @@
                   <button class="btn btn-primary rounded-0" type="submit">Suscribirse</button>
                 </div>
                 <p class="text-smaller mb-0 message-ok" id="submessage">Gracias por suscribirse. Comenzará a recibir las
-                  últimas novedades para potenciar su negocio.</p>
+                  últimas novedades de Comersa en su corre</p>
               </form>
             </div>
-            <div class="mt-3 d-flex justify-content-md-end">
+      <!--       <div class="mt-3 d-flex justify-content-md-end">
               <a href="#" class="social-icon si-small border-transparent h-bg-facebook">
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-facebook-f"></i>
@@ -449,7 +475,7 @@
                 <i class="fa-brands fa-linkedin"></i>
                 <i class="fa-brands fa-linkedin"></i>
               </a>
-            </div>
+            </div> -->
 
           </div>
 
@@ -467,7 +493,7 @@
               <div class="copyrights-menu copyright-links">
 
               </div>
-              <p>Copyright &copy; 2024 Todos los derechos reservados.</p><br>
+              <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Todos los derechos reservados.</p><br>
               <!-- <div class="copyright-links">
                 <a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
               </div> -->
@@ -476,7 +502,7 @@
             <div class="col-12 col-md-auto text-center text-md-start">
               <div class="copyrights-menu copyright-links">
                 <a href="#">Inicio</a> /
-                <a href="#">Contacto</a>
+                <a href="/contact.html">Contacto</a>
                 <a href="#">
                   <img src="/images/comersa_afipQR.jpg" alt="logo q r afip" id="qrAfip">
                 </a>
@@ -506,26 +532,53 @@
 
   <!-- JavaScripts
 	============================================= -->
-  <script src="js/plugins.min.js"></script>
-  <script src="js/functions.bundle.js"></script>
+  <script src="js/min/plugins.min.min.js" defer></script>
+  <script src="js/min/functions.bundle.min.js" defer></script>
   <script>
-    const scriptURL =
-      'https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec'
-
-
-    const subscribeForm = document.forms['widget-subscribe-form'];
-
-    subscribeForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(subscribeForm) })
-        .then((response) => {
-          submessage.style.visibility = 'visible';
-          subscribeForm.reset()
-        }
-        )
-        .catch((error) => console.error('Error!', error.message));
+    // Script simplificado y optimizado
+    document.addEventListener("DOMContentLoaded", function() {
+      const subscribeForm = document.forms['widget-subscribe-form'];
+      const submessage = document.getElementById('submessage');
+      
+      if (subscribeForm) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyk36wcFlYkdaUIdRlSBIiTn8RwE9jJ_RsSN5mE6G4_AWjioc8_BwQK7F4-29H9ik8c8w/exec';
+        const submitButton = document.querySelector('#widget-subscribe-form button');
+        
+        subscribeForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (submitButton) {
+            submitButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Enviando...';
+            submitButton.disabled = true;
+          }
+          
+          fetch(scriptURL, { method: 'POST', body: new FormData(subscribeForm) })
+            .then(function() {
+              if (submitButton) {
+                submitButton.innerHTML = 'Suscribirse';
+                submitButton.disabled = false;
+              }
+              submessage.style.visibility = 'visible';
+              subscribeForm.reset();
+              setTimeout(function() {
+                submessage.style.visibility = 'hidden';
+              }, 5000);
+            })
+            .catch(function(error) {
+              console.error('Error!', error.message);
+              if (submitButton) {
+                submitButton.innerHTML = 'Suscribirse';
+                submitButton.disabled = false;
+              }
+              submessage.innerHTML = 'Ocurrió un error. Por favor intente nuevamente.';
+              submessage.style.visibility = 'visible';
+              setTimeout(function() {
+                submessage.style.visibility = 'hidden';
+                submessage.innerHTML = 'Gracias por suscribirse. Comenzará a recibir las últimas novedades para potenciar su negocio.';
+              }, 5000);
+            });
+        });
+      }
     });
-    // https://script.google.com/macros/s/AKfycbzXO4k9S4zbesRE4r3QXHg5DX8J6UFESxCV3mScFNpjRy2kt3g1UXWPVtw1k8DPqDmeyQ/exec
   </script>
 
 
