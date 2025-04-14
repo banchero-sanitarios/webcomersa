@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /contact.html
+Allow: /download-prices.html
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /catalogs/
+
+# Sitemap
+Sitemap: https://www.comersa.com.ar/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10 
